@@ -8,6 +8,8 @@ public abstract class TShape {
     protected double y;
     protected double height;
     protected double width;
+    protected double area;
+    protected double perimeter;
     protected TRectangle resizeRectangle;
     protected ShapeType shapeType;
     protected Color fillColor;
@@ -46,6 +48,9 @@ public abstract class TShape {
             drawSelectionRect(gc);
             drawResizeRect(gc);
         }
+
+        calculatePerimeter();
+        calculateArea();
     }
 
     public void updateEndCoordinates(double xEnd, double yEnd) {
@@ -88,6 +93,14 @@ public abstract class TShape {
         return this.resizeRectangle;
     }
 
+    public double getArea() {
+        return this.area;
+    }
+
+    public double getPerimeter() {
+        return this.perimeter;
+    }
+
     private void drawResizeRect(GraphicsContext gc) {
         resizeRectangle = new TRectangle(x +width, y+height, 10, 10, shapeType);
         resizeRectangle.drawShape(gc, Color.GOLD, Color.GOLD);
@@ -103,4 +116,6 @@ public abstract class TShape {
 
     public abstract void drawShape(GraphicsContext gc, Color strokeColor, Color fillColor);
     public abstract boolean containsPoint(double xpos, double ypos);
+    protected abstract void calculateArea();
+    protected abstract void calculatePerimeter();
 }

@@ -35,4 +35,14 @@ public class TRectangle extends TShape {
         double y2 = this.getY() + this.getHeight();
         return (x1 <= xpos && xpos <= x2 && y1 <= ypos && ypos <= y2);
     }
+
+    @Override
+    protected void calculateArea() {
+        this.area = height*width;
+    }
+
+    @Override
+    protected void calculatePerimeter() {
+        this.perimeter = 2*(height + width);
+    }
 }

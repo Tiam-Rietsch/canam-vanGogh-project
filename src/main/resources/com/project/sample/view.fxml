@@ -57,6 +57,11 @@
             <Label layoutX="14.0" layoutY="539.0" text="Y:" />
             <Label fx:id="mouseX" layoutX="29.0" layoutY="501.0" text="0" />
             <Label fx:id="mouseY" layoutX="29.0" layoutY="539.0" text="0" />
+            <Label layoutX="15.0" layoutY="354.0" text="Geometric Properties" />
+            <Label layoutX="17.0" layoutY="387.0" text="Area:" />
+            <Label fx:id="areaLabel" layoutX="51.0" layoutY="387.0" prefHeight="17.0" prefWidth="66.0" />
+            <Label layoutX="20.0" layoutY="425.0" text="Perimeter:" />
+            <Label fx:id="perimeterLabel" layoutX="84.0" layoutY="425.0" prefHeight="17.0" prefWidth="66.0" />
          </children>
       </Pane>
    </right>

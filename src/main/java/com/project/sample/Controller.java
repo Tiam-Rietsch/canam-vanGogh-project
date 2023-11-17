@@ -66,6 +66,12 @@ public class Controller {
     private TextField widthInput;
 
     @FXML
+    private Label areaLabel;
+
+    @FXML
+    private Label perimeterLabel;
+
+    @FXML
     private Label mouseX;
 
     @FXML
@@ -179,6 +185,13 @@ public class Controller {
         GraphicsContext gc = myCanvas.getGraphicsContext2D();
 
         redrawCanvas(gc, selectedShape);
+
+        this.xPosInput.setText(String.valueOf(selectedShape.getX()));
+        this.yPosInput.setText(String.valueOf(selectedShape.getY()));
+        this.heightInput.setText(String.valueOf(selectedShape.getHeight()));
+        this.widthInput.setText(String.valueOf(selectedShape.getWidth()));
+        this.areaLabel.setText(String.valueOf(selectedShape.getArea()));
+        this.perimeterLabel.setText(String.valueOf(selectedShape.getPerimeter()));
     }
 
     public void resizeShape(MouseEvent event) {
@@ -197,6 +210,8 @@ public class Controller {
         this.yPosInput.setText(String.valueOf(selectedShape.getY()));
         this.heightInput.setText(String.valueOf(selectedShape.getHeight()));
         this.widthInput.setText(String.valueOf(selectedShape.getWidth()));
+        this.areaLabel.setText(String.valueOf(selectedShape.getArea()));
+        this.perimeterLabel.setText(String.valueOf(selectedShape.getPerimeter()));
         this.prevMouseY = event.getY();
         this.prevMouseX = event.getX();
     }

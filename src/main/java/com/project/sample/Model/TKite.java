@@ -22,6 +22,10 @@ public class TKite extends TShape {
         return this.strokeColor;
     }
 
+    private double distanceBetween2Points(double x1, double x2, double y1, double y2) {
+        return Math.sqrt(Math.pow((y2 - y1), 2) + Math.pow((x2 - x1), 2));
+    }
+
     @Override
     public void drawShape(GraphicsContext gc, Color strokeColor, Color fillColor) {
         gc.setStroke(strokeColor);
@@ -46,5 +50,19 @@ public class TKite extends TShape {
         double x2 = this.getX() + this.getWidth();
         double y2 = this.getY() + this.getHeight();
         return (x1 <= xpos && xpos <= x2 && y1 <= ypos && ypos <= y2);
+    }
+
+    @Override
+    protected void calculateArea() {
+        double side1 = distanceBetween2Points(xp[0], xp[1], yp[0], yp[1]);
+        double side2 = distanceBetween2Points(xp[1], xp[2], yp[1], yp[2]);
+        this.area = side1*side2;
+    }
+
+    @Override
+    protected void calculatePerimeter() {
+        double side1 = distanceBetween2Points(xp[0], xp[1], yp[0], yp[1]);
+        double side2 = distanceBetween2Points(xp[1], xp[2], yp[1], yp[2]);
+        this.perimeter = 2*side1 + 2*side2;
     }
 }
