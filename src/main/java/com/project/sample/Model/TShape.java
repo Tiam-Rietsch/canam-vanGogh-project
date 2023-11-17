@@ -101,6 +101,30 @@ public abstract class TShape {
         return this.perimeter;
     }
 
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setX(double xpos) {
+        this.x = xpos;
+    }
+
+    public void setY(double ypos) {
+        this.y = ypos;
+    }
+
+    public void setFillColor(Color color) {
+        this.fillColor = color;
+    }
+
+    public void setStrokeColor(Color color) {
+        this.strokeColor = color;
+    }
+
     private void drawResizeRect(GraphicsContext gc) {
         resizeRectangle = new TRectangle(x +width, y+height, 10, 10, shapeType);
         resizeRectangle.drawShape(gc, Color.GOLD, Color.GOLD);

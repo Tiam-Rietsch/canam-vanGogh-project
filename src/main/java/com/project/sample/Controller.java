@@ -2,6 +2,7 @@ package com.project.sample;
 
 import com.project.sample.Model.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -150,6 +151,10 @@ public class Controller {
         }
     }
 
+
+
+    //------------------------------------------- Event Listeners -----------------------------------------
+
     public void drawShape(MouseEvent event) {
         shapeType = getSelectedShapeType();
         this.fillColor = bgColorPicker.getValue();
@@ -219,6 +224,34 @@ public class Controller {
     public void showMousePositions(MouseEvent event) {
         mouseX.setText(String.valueOf(event.getX()));
         mouseY.setText(String.valueOf(event.getY()));
+    }
+
+    public void onInputEdited(Event event) {
+        GraphicsContext gc = myCanvas.getGraphicsContext2D();
+
+        if (selectedShape == null) {
+            shapeType = getSelectedShapeType();
+            this.fillColor = bgColorPicker.getValue();
+            this.strokeColor = strokeColorPicker.getValue();
+            initializeShape(gc, 0, 0);
+        }
+
+        selectedShape.setWidth(Double.parseDouble(widthInput.getText()));
+        selectedShape.setHeight(Double.parseDouble(heightInput.getText()));
+        selectedShape.setX(Double.parseDouble(xPosInput.getText()));
+        selectedShape.setY(Double.parseDouble(yPosInput.getText()));
+        this.areaLabel.setText(String.valueOf(selectedShape.getArea()));
+        this.perimeterLabel.setText(String.valueOf(selectedShape.getPerimeter()));
+        gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
+        redrawCanvas(gc, selectedShape);
+    }
+
+    public void onColorsEdited(Event event) {
+        GraphicsContext gc = myCanvas.getGraphicsContext2D();
+        selectedShape.setFillColor(bgColorPicker.getValue());
+        selectedShape.setStrokeColor(strokeColorPicker.getValue());
+        gc.clearRect(0, 0, myCanvas.getWidth(), myCanvas.getHeight());
+        redrawCanvas(gc, selectedShape);
     }
 
 }
